@@ -60,7 +60,8 @@ RTCZero rtc;
 
 //Global variables for our program
 bool settingpage = false, viewpage = false,homepage = true;
-float userinput = 10.0;
+float userinput = 30.0;
+int difference = 0;
 
 void setup(){
   //Begin interface with 9600 baud rate
@@ -99,8 +100,6 @@ void setup(){
 
 void loop() {
   aci_loop();
-  timedisplay();
-  
   if (homepage) {
     writeInput(get_lux_level());
   }
@@ -117,6 +116,7 @@ void loop() {
     MainPage();
     settingpage = false;
     homepage = true;
+    delay(500);
   }
   if (display.getButtons(TSButtonLowerRight) && homepage) {
     display.clearScreen();

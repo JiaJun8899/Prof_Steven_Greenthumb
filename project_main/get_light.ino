@@ -81,8 +81,7 @@ void setLed(bool set) {
 void writeInput(float avgAmbientLightLux) {
   display.setFont(thinPixel7_10ptFontInfo);
   display.fontColor(TS_8b_White, TS_8b_Black);
-  //display.clearScreen();
-  //int width = display.getPrintWidth("Example Text!");
+  int width = display.getPrintWidth("Example Text!");
   display.setCursor(25, 25);
   display.print("Lux:");
   display.print(avgAmbientLightLux);

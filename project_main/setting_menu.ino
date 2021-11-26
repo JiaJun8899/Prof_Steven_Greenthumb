@@ -1,5 +1,5 @@
 //This file contains all the function that setting page need to use
-
+// Polling for button press on the tiny circuit
 void settingsbtn() {
   display.setCursor(35, 25);
   display.fontColor(TS_8b_White, TS_8b_Black);
@@ -34,8 +34,9 @@ void settingsbtn() {
   }
   if (display.getButtons(TSButtonUpperRight)) {
     display.fontColor(TS_8b_Blue, TS_8b_Black);
-    display.setCursor(30, 55);
-    display.println("Steven!");
+    display.setCursor(25, 55);
+    display.println("Prof Steven!");
+    delay(500);
   } else {
     display.println("          ");
   }

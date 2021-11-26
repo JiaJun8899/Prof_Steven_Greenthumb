@@ -136,7 +136,7 @@ void Attribute_Modified_CB(uint16_t handle, uint8_t data_length, uint8_t *att_da
     ble_rx_buffer_len = data_length;
   }
 }
-
+//Function for successful connection
 void GAP_ConnectionComplete_CB(uint8_t addr[6], uint16_t handle) {
   connected = TRUE;
   connection_handle = handle;
@@ -147,13 +147,14 @@ void GAP_ConnectionComplete_CB(uint8_t addr[6], uint16_t handle) {
   PRINTF("%02X\r\n", addr[0]);
 }
 
+//Function to handle disconnection
 void GAP_DisconnectionComplete_CB(void) {
   connected = FALSE;
   PRINTF("Disconnected\n");
   /* Make the device connectable again. */
   set_connectable = TRUE;
 }
-
+//Function to handle disconnection
 void HCI_Event_CB(void *pckt)
 {
   hci_uart_pckt *hci_pckt = (hci_uart_pckt *)pckt;
@@ -202,6 +203,7 @@ void HCI_Event_CB(void *pckt)
   }
 }
 
+//Function for sending data over to the phone
 void setble(uint8_t sendBuffer[], uint8_t sendLength){
   unsigned long startTime = millis();
   while (millis() - startTime < 200){
