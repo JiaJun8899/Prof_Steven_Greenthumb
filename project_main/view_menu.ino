@@ -8,21 +8,21 @@ void displaydate(int clicked) {
       currentmonth = rtc.getMonth();
       currentyear = rtc.getYear();
     }
-    int x = dateDiff(currentday, currentmonth, currentyear);
-    if(x>0){
-      leds[0] = CRGB( 255, 0, 0); // BLUE
+    difference = dateDiff(currentday, currentmonth, currentyear);
+    if(difference>6){
+      leds[0] = CRGB( 255, 0, 0); // Red
       FastLED.show();
       uint8_t sendWater[] = "Water Me!!";
       setble((uint8_t*)sendWater, sizeof(sendWater));
       }
     else{
-      leds[0] = CRGB( 0, 0, 0); // BLUE
+      leds[0] = CRGB( 0, 0, 0); // OFF
       FastLED.show();
       uint8_t sendWatered[] = "Water? Yay!";
       setble((uint8_t*)sendWatered, sizeof(sendWatered));
       }
     display.setCursor(15, 50 - (display.getFontHeight() / 2));
-    display.println(x, DEC);
+    display.println(difference, DEC);
     display.print(" days ago");
   }
 }
